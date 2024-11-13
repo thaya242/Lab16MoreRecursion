@@ -1,28 +1,42 @@
 public class MoreRecursionHelper {
-    /** Student: Self-Explanation
-     * 
-     * 
-     * 
-     */
+
+    /** Converts a decimal number to binary */
     public int toBinary(int toConvert) {
-        //TODO: Student
-        return 0;
+        // Base case: if the number is 0, return 0
+        if (toConvert == 0) {
+            return 0;
+        } else {
+            // Recursive case: find the binary of the number, append the current bit
+            return (toConvert % 2) + 10 * toBinary(toConvert / 2);
+        }
     }
-    /** Student: Self-Explanation
-     * 
-     * 
-     * 
-     */
+
+    /** Computes the total number of blocks in a pyramid with 'rows' rows */
     public int pyramidTotal(int rows) {
-        //TODO: Student
-        return 0;
+        // Base case: when rows is 0, the pyramid has 0 blocks
+        if (rows == 0) {
+            return 0;
+        } else {
+            // Recursive case: add the current row's blocks (which is 'rows') to the total blocks of smaller pyramids
+            return rows + pyramidTotal(rows - 1);
+        }
     }
-    /** Student: Self-Explanation
-     * 
-     * 
-     * 
-     */
+
+    /** Generates and prints all combinations of characters from the input string */
     public void combinations(String str, int index, String currStr) {
-        //TODO: Student
+        // Debug output to trace recursive calls
+        System.out.println("Debug - Index: " + index + ", Current Combination: " + currStr);
+
+        // Base case: when we've processed all characters, print the current combination
+        if (index == str.length()) {
+            System.out.println(currStr);  // Print the current combination
+            return;
+        }
+
+        // Recursive case 1: include the character at the current index in the combination
+        combinations(str, index + 1, currStr + str.charAt(index));
+
+        // Recursive case 2: exclude the character at the current index from the combination
+        combinations(str, index + 1, currStr);
     }
 }
